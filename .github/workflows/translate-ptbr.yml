@@ -9,6 +9,10 @@ on:
       - .github/workflows/translate-ptbr.yml
   workflow_dispatch:
 
+concurrency:
+  group: ptbr-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
