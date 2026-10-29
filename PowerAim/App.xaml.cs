@@ -70,9 +70,13 @@ public partial class App : System.Windows.Application
     {
         try
         {
+            string log = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "PowerAim", "poweraim-errors.log");
             MessageBox.Show(
-                "O PowerAim não conseguiu iniciar.\\n\\n".Replace("\\\\n", "\\n") + ex.Message +
-                "\\n\\nDetalhes em %LOCALAPPDATA%\\PowerAim\\poweraim-errors.log",
+                "O PowerAim não conseguiu iniciar." + Environment.NewLine +
+                Environment.NewLine + ex.Message + Environment.NewLine +
+                Environment.NewLine + "Detalhes em: " + log,
                 "PowerAim — Falha de inicialização",
                 MessageBoxButton.OK, MessageBoxImage.Error);
         }
