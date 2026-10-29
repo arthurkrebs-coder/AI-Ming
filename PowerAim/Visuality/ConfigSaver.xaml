@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PowerAim.Visuality"
         xmlns:visuality="clr-namespace:PowerAim.Visuality"
         mc:Ignorable="d"
-        Title="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveConfiguration'}"
+        Title="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SaveConfiguration'}"
         Height="250"
         Width="470"
         WindowStyle="None"
@@ -30,7 +30,7 @@
                            Foreground="{DynamicResource FluentAccent}"
                            FontSize="14"
                            VerticalAlignment="Center" />
-                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveConfiguration'}"
+                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SaveConfiguration'}"
                            Margin="10,0,0,0"
                            VerticalAlignment="Center"
                            Foreground="{DynamicResource FluentTextPrimary}"
@@ -93,7 +93,7 @@
                              Background="Transparent"
                              Padding="10,0,10,0"
                              VerticalContentAlignment="Center"
-                             Tag="{Binding Converter={StaticResource localeConverter}, ConverterParameter='InsertConfigNameHere'}"
+                             Tag="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='InsertConfigNameHere'}"
                              FontFamily="Segoe UI Variable Text"
                              FontSize="13"
                              Style="{DynamicResource placeHolder}"
@@ -129,7 +129,7 @@
                              Background="Transparent"
                              Padding="10,0,10,0"
                              VerticalContentAlignment="Center"
-                             Tag="{Binding Converter={StaticResource localeConverter}, ConverterParameter='InsertRecommendedModelNameHere'}"
+                             Tag="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='InsertRecommendedModelNameHere'}"
                              FontFamily="Segoe UI Variable Text"
                              FontSize="13"
                              Style="{DynamicResource placeHolder}"
@@ -169,7 +169,7 @@
                             CornerRadius="7"
                             Margin="0,0,22,0" />
                 </Border>
-                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='CheckBoxIsDownloadable'}"
+                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='CheckBoxIsDownloadable'}"
                            Margin="50,0,0,0"
                            VerticalAlignment="Center"
                            Foreground="{DynamicResource FluentTextPrimary}"
@@ -192,7 +192,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,14,14">
             <Button x:Name="SaveButton"
                     Style="{StaticResource FluentAccentButton}"
-                    Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                    Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                     MinWidth="100"
                     Click="SaveButton_Click" />
         </StackPanel>
