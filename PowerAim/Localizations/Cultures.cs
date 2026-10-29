@@ -7,6 +7,7 @@ public static class Cultures
     public static IEnumerable<CultureInfo> All => new[]
     {
         new CultureInfo("en-US"),
+        new CultureInfo("pt-BR"),
         new CultureInfo("de-DE"),
         new CultureInfo("it-IT"),
         new CultureInfo("es-ES"),
