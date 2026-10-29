@@ -159,7 +159,7 @@ namespace Launcher
             {
                 Version = ExecutableManager.LoadResourceTable(exe, s => Status = s)?.FileVersion;
                 await Task.Delay(200);
-                await RenameExe(exe);
+                await LaunchMainApp(exe);
             }
         }
 
@@ -174,18 +174,16 @@ namespace Launcher
         }
 
 
-        private async Task RenameExe(string exe)
+        private async Task LaunchMainApp(string exe)
         {
-            var error = await ExecutableManager.RenameExecutable(exe, newName =>
-            {
-                Status = $"Shuffle name to {newName}";
-            });
+            var error = await ExecutableManager.StartExecutable(exe, message => Status = message);
 
             if (error != null)
             {
-                // Stay open so the user can actually read why nothing happened.
+                // Keep the window open and show errors instead of disappearing silently.
+                StartupDiagnostics.Report("Launch PowerAim", error);
                 Status = error;
-                SubTitle = "Start failed";
+                SubTitle = "Falha ao abrir o PowerAim";
                 return;
             }
 
