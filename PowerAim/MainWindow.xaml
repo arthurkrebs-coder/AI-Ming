@@ -93,13 +93,19 @@
                         <Menu Cursor="Hand"
                               Background="Transparent"
                               VerticalAlignment="Center">
-                            <MenuItem Header="&#xE712;"
-                                      FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
-                                      FontSize="14"
+                            <MenuItem
+                                      FontFamily="Segoe UI Variable Small"
+                                      FontSize="12"
                                       Foreground="{StaticResource FluentTextSecondary}"
                                       Padding="6,4,6,4"
                                       Background="Transparent"
                                       ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ConfigTooltip'}">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="&#xE712;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" Margin="0,0,7,0" />
+                                        <TextBlock Text="{Binding Config.EffectiveConfigLabel}" FontFamily="Segoe UI Variable Small" FontSize="12" MaxWidth="100" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </MenuItem.Header>
                                 <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveAsQuickConfig'}" Click="MenuItem_OnClick" />
                                 <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveConfigAs'}" Click="MenuItemSaveAs_OnClick" />
                                 <Separator />
@@ -113,11 +119,12 @@
 
                     <!-- Center cluster: quick toggle + monitor select (stays here, modernized) -->
                     <Border Grid.Column="1"
-                            HorizontalAlignment="Center"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
                             CornerRadius="10"
                             Padding="8,5,8,5"
-                            MinWidth="520"
+                            MinWidth="0"
+                            Margin="8,0,8,0"
                             MinHeight="38"
                             BorderThickness="1"
                             BorderBrush="{StaticResource FluentStroke}"
@@ -144,10 +151,16 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    x:Name="TopCenterGrid" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Stretch"
+                                      CanContentScroll="True">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        x:Name="TopCenterGrid" />
+                        </ScrollViewer>
                     </Border>
 
                     <!-- Right cluster: search + section badge + window controls -->
