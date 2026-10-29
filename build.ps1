@@ -296,9 +296,12 @@ function Replace-AssemblyName {
     $new | Out-File -FilePath $filePath -Encoding utf8 -NoNewline
 }
 
-$pickedAssemblyName = Get-RandomAssemblyName
+# Keep a stable executable name on the personal pt-BR build. The original
+# randomized assembly name made it difficult to find the executable and caused
+# the launcher to rename it again on every start.
+$pickedAssemblyName = "PowerAim"
 Write-Host ""
-Write-Host "Picked random AssemblyName for this build: $pickedAssemblyName"
+Write-Host "AssemblyName for this build: $pickedAssemblyName"
 Replace-AssemblyName -newName $pickedAssemblyName -filePath $csprojPath
 
 # Each variant lands in its OWN dedicated folder under bin/Release so the two builds can never mix
