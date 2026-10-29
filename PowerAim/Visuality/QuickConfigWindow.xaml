@@ -39,7 +39,7 @@
             <DropShadowEffect BlurRadius="26" ShadowDepth="5" Opacity="0.5" Color="#000000" />
         </Border.Effect>
         <StackPanel>
-            <TextBlock Text="QUICK CONFIG"
+            <TextBlock x:Name="QuickConfigTitle" Text="QUICK CONFIG"
                        Margin="10,5,10,7"
                        FontFamily="Segoe UI Variable Small"
                        FontSize="10.5"
