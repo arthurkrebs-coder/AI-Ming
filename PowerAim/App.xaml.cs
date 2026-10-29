@@ -85,8 +85,27 @@ public partial class App : System.Windows.Application
 
     protected override void OnExit(ExitEventArgs e)
     {
-        OcrService.Instance.Stop();
-        PowerAim.InputLogic.Mapping.MappingEngine.Instance.Dispose();
+        // A startup failure may happen before either service is initialized.
+        // Do not let cleanup throw a second NullReferenceException and hide
+        // the original WPF/XAML error recorded in poweraim-errors.log.
+        try
+        {
+            OcrService.Instance?.Stop();
+        }
+        catch (Exception ex)
+        {
+            RecordFatalError("OCR cleanup", ex);
+        }
+
+        try
+        {
+            PowerAim.InputLogic.Mapping.MappingEngine.Instance?.Dispose();
+        }
+        catch (Exception ex)
+        {
+            RecordFatalError("Controller mapping cleanup", ex);
+        }
+
         base.OnExit(e);
     }
 
