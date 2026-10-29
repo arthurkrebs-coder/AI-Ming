@@ -58,13 +58,11 @@
                         <Button x:Name="Minimize"
                                 Style="{StaticResource CaptionButton}"
                                 Content="&#xE921;"
-                                Visibility="{Binding InstallerVisibility}"
                                 Click="Minimize_OnClick" />
                         <Button x:Name="Exit"
                                 Style="{StaticResource CloseButton}"
                                 Content="&#xE8BB;"
                                 IsEnabled="{Binding CanClose}"
-                                Visibility="{Binding InstallerVisibility}"
                                 Click="Exit_OnClick" />
                     </StackPanel>
                 </Grid>
@@ -111,6 +109,9 @@
                                    TextWrapping="Wrap"
                                    TextAlignment="Center" />
                         <TextBlock Text="{Binding Status}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="460"
+                                   TextAlignment="Center"
                                    Foreground="{StaticResource FluentTextTertiary}"
                                    FontFamily="Segoe UI Variable Small"
                                    FontSize="11"
