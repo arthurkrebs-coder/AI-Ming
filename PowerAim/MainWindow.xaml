@@ -99,20 +99,20 @@
                                       Foreground="{StaticResource FluentTextSecondary}"
                                       Padding="6,4,6,4"
                                       Background="Transparent"
-                                      ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ConfigTooltip'}">
+                                      ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ConfigTooltip'}">
                                 <MenuItem.Header>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="&#xE712;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" Margin="0,0,7,0" />
                                         <TextBlock Text="{Binding Config.EffectiveConfigLabel}" FontFamily="Segoe UI Variable Small" FontSize="12" MaxWidth="100" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </MenuItem.Header>
-                                <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveAsQuickConfig'}" Click="MenuItem_OnClick" />
-                                <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveConfigAs'}" Click="MenuItemSaveAs_OnClick" />
+                                <MenuItem Header="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SaveAsQuickConfig'}" Click="MenuItem_OnClick" />
+                                <MenuItem Header="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SaveConfigAs'}" Click="MenuItemSaveAs_OnClick" />
                                 <Separator />
-                                <MenuItem x:Name="MenuItemOpenCfg" Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OpenQuickConfig'}" />
-                                <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OpenOtherConfig'}" Click="OpenConfig_Click" />
+                                <MenuItem x:Name="MenuItemOpenCfg" Header="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OpenQuickConfig'}" />
+                                <MenuItem Header="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OpenOtherConfig'}" Click="OpenConfig_Click" />
                                 <Separator />
-                                <MenuItem Header="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ShowSetupWizard'}" Click="ShowWizard_Click" />
+                                <MenuItem Header="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ShowSetupWizard'}" Click="ShowWizard_Click" />
                             </MenuItem>
                         </Menu>
                     </StackPanel>
@@ -179,7 +179,7 @@
                                 BorderThickness="0"
                                 Visibility="Collapsed"
                                 Foreground="{StaticResource FluentAccent}"
-                                ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='RestartAsAdminTooltip'}"
+                                ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='RestartAsAdminTooltip'}"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 Click="RestartAsAdminButton_Click"
                                 Margin="0,0,4,0" />
@@ -196,7 +196,7 @@
                                 Margin="0,0,8,0"
                                 Visibility="Collapsed"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
-                                ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='InferenceGpuTooltip'}">
+                                ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='InferenceGpuTooltip'}">
                             <Border CornerRadius="{StaticResource PillCorner}"
                                     Background="{StaticResource FluentSurface3}"
                                     BorderBrush="{StaticResource FluentStroke}"
@@ -256,7 +256,7 @@
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Foreground="{StaticResource FluentTextPrimary}"
-                                ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='FindSettingTooltip'}"
+                                ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='FindSettingTooltip'}"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 Margin="0,0,8,0" />
                         <Popup x:Name="GlobalSearchPopup"
@@ -285,7 +285,7 @@
                                              Background="{StaticResource FluentSurface3}"
                                              BorderBrush="{StaticResource FluentStroke}"
                                              Foreground="{StaticResource FluentTextPrimary}"
-                                             Tag="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SearchSettings'}"
+                                             Tag="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SearchSettings'}"
                                              Style="{DynamicResource placeHolder}" />
                                     <Border Height="1"
                                             Background="{StaticResource FluentStroke}"
@@ -300,7 +300,7 @@
                                                FontFamily="Segoe UI Variable Small"
                                                FontSize="11"
                                                Margin="2,6,2,0"
-                                               Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SearchHint'}" />
+                                               Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SearchHint'}" />
                                 </StackPanel>
                             </Border>
                         </Popup>
@@ -325,7 +325,7 @@
                                     </Ellipse.Style>
                                 </Ellipse>
                                 <Label x:Name="SectionLabel"
-                                       Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MainSection'}"
+                                       Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='MainSection'}"
                                        Padding="0"
                                        VerticalAlignment="Center"
                                        FontFamily="Segoe UI Variable Small"
@@ -402,7 +402,7 @@
                         <!-- Hamburger -->
                         <Button Grid.Row="0"
                                 x:Name="HamburgerButton"
-                                ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ToggleNavigation'}"
+                                ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ToggleNavigation'}"
                                 Style="{StaticResource NavItemButton}"
                                 Click="HamburgerButton_Click">
                             <TextBlock Text="&#xE700;"
@@ -438,7 +438,7 @@
                                             Margin="8,0,8,6" />
                                     <Button x:Name="ButtonGamepadSettings"
                                             Tag="GamepadSettings"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Gamepad'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Gamepad'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -447,12 +447,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE7FC;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Gamepad'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Gamepad'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="Menu5B"
                                             Tag="Logs"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Logs'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Logs'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -461,12 +461,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE9D5;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Logs'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Logs'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="Menu3B"
                                             Tag="SettingsMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Settings'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Settings'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -475,12 +475,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE713;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Settings'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Settings'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="MenuHelpB"
                                             Tag="HelpPage"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DocsHelpTooltip'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DocsHelpTooltip'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -489,12 +489,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE897;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Help'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Help'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="Menu4B"
                                             Tag="AboutMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='About'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='About'}"
                                             Visibility="{x:Static poweraim:ApplicationConstants.EasyModeHidden}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
@@ -504,7 +504,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE946;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='About'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='About'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                 </StackPanel>
@@ -512,7 +512,7 @@
                                             x:Name="MenuButtons">
                                     <Button x:Name="Menu1B"
                                             Tag="AimMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AimTools'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AimTools'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -521,12 +521,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE726;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AimTools'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AimTools'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="ButtonTools"
                                             Tag="Tools"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Tools'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Tools'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -535,12 +535,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE90F;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Tools'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Tools'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="AutoPlayMenuButton"
                                             Tag="AutoPlayMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AutoPlayMenuTooltip'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AutoPlayMenuTooltip'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -549,12 +549,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE768;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AutoPlay'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AutoPlay'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="MappingMenuButton"
                                             Tag="MappingMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MappingMenuTooltip'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='MappingMenuTooltip'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -563,12 +563,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE765;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Mapping'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Mapping'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                     <Button x:Name="Menu2B"
                                             Tag="ModelMenu"
-                                            ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ModelsAndConfigs'}"
+                                            ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ModelsAndConfigs'}"
                                             Style="{StaticResource NavItemButton}"
                                             Click="MenuSwitch">
                                         <Grid>
@@ -577,7 +577,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="&#xE8E5;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ModelsAndConfigs'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ModelsAndConfigs'}" FontFamily="Segoe UI Variable Text" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="6,0,8,0" />
                                         </Grid>
                                     </Button>
                                 </StackPanel>
@@ -650,11 +650,11 @@
                                         <Button x:Name="SegModels"
                                                 Style="{StaticResource FluentSegmentActive}"
                                                 Click="SegModels_Click"
-                                                Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Models'}" />
+                                                Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Models'}" />
                                         <Button x:Name="SegConfigs"
                                                 Style="{StaticResource FluentSegment}"
                                                 Click="SegConfigs_Click"
-                                                Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Configs'}" />
+                                                Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Configs'}" />
                                     </StackPanel>
                                 </Border>
 
@@ -679,7 +679,7 @@
                                                    Margin="0,0,8,0" />
                                         <TextBox Grid.Column="1"
                                                  x:Name="UnifiedSearchBox"
-                                                 Tag="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SearchModelsDownloads'}"
+                                                 Tag="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SearchModelsDownloads'}"
                                                  Style="{DynamicResource placeHolder}"
                                                  FontFamily="Segoe UI Variable Text"
                                                  FontSize="13"
@@ -719,7 +719,7 @@
                                                    FontSize="13"
                                                    Padding="0"
                                                    VerticalContentAlignment="Center"
-                                                   Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LoadedModel,N/A'}" />
+                                                   Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='LoadedModel,N/A'}" />
                                         </Grid>
                                     </Border>
 
@@ -733,11 +733,11 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0"
                                                            Style="{StaticResource FluentSectionTitle}"
-                                                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Installed'}" />
+                                                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Installed'}" />
                                                 <Button Grid.Column="1"
                                                         x:Name="OpenFolderB_ModelWindow"
                                                         Content="&#xE838;"
-                                                        ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OpenModelsFolder'}"
+                                                        ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OpenModelsFolder'}"
                                                         Style="{StaticResource FluentIconButton}"
                                                         Width="32"
                                                         Height="32"
@@ -783,7 +783,7 @@
                                                                                    WithBorder="False"
                                                                                    Text="" />
                                                             <Button Grid.Column="3"
-                                                                    ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DeleteModel'}"
+                                                                    ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DeleteModel'}"
                                                                     Style="{StaticResource FluentIconButton}"
                                                                     Content="&#xE74D;"
                                                                     Tag="{Binding}"
@@ -803,11 +803,11 @@
                                             Visibility="{x:Static poweraim:ApplicationConstants.EasyModeHidden}">
                                         <StackPanel>
                                             <TextBlock Style="{StaticResource FluentSectionTitle}"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DownloadableModels'}" />
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DownloadableModels'}" />
                                             <Label x:Name="LackOfModelsText"
                                                    Visibility="Collapsed"
                                                    HorizontalContentAlignment="Center"
-                                                   Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='NoDownloadableModelAvailable'}"
+                                                   Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='NoDownloadableModelAvailable'}"
                                                    Foreground="{StaticResource FluentTextSecondary}" />
                                             <StackPanel x:Name="ModelStoreScroller" />
                                         </StackPanel>
@@ -841,7 +841,7 @@
                                                    FontSize="13"
                                                    Padding="0"
                                                    VerticalContentAlignment="Center"
-                                                   Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LoadedConfig,N/A'}" />
+                                                   Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='LoadedConfig,N/A'}" />
                                         </Grid>
                                     </Border>
 
@@ -855,11 +855,11 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0"
                                                            Style="{StaticResource FluentSectionTitle}"
-                                                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Installed'}" />
+                                                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Installed'}" />
                                                 <Button Grid.Column="1"
                                                         x:Name="OpenFolderB_ConfigWindow"
                                                         Content="&#xE838;"
-                                                        ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OpenConfigsFolder'}"
+                                                        ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OpenConfigsFolder'}"
                                                         Style="{StaticResource FluentIconButton}"
                                                         Width="32"
                                                         Height="32"
@@ -905,7 +905,7 @@
                                                                                    WithBorder="False"
                                                                                    Text="" />
                                                             <Button Grid.Column="3"
-                                                                    ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DeleteConfig'}"
+                                                                    ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DeleteConfig'}"
                                                                     Style="{StaticResource FluentIconButton}"
                                                                     Content="&#xE74D;"
                                                                     Tag="{Binding}"
@@ -925,11 +925,11 @@
                                             Visibility="{x:Static poweraim:ApplicationConstants.EasyModeHidden}">
                                         <StackPanel>
                                             <TextBlock Style="{StaticResource FluentSectionTitle}"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DownloadableConfigs'}" />
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DownloadableConfigs'}" />
                                             <Label x:Name="LackOfConfigsText"
                                                    Visibility="Collapsed"
                                                    HorizontalContentAlignment="Center"
-                                                   Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='NoDownloadableConfigAvailable'}"
+                                                   Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='NoDownloadableConfigAvailable'}"
                                                    Foreground="{StaticResource FluentTextSecondary}" />
                                             <StackPanel x:Name="ConfigStoreScroller" />
                                         </StackPanel>
@@ -1015,13 +1015,13 @@
                                     </Grid.RowDefinitions>
                                     <DockPanel HorizontalAlignment="Stretch">
                                         <TextBlock DockPanel.Dock="Left"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Logs'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Logs'}"
                                                    Style="{StaticResource FluentSectionTitle}"
                                                    FontSize="16"
                                                    VerticalAlignment="Center"
                                                    Margin="2,0,0,0" />
                                         <Button DockPanel.Dock="Right"
-                                                ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ClearLogs'}"
+                                                ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ClearLogs'}"
                                                 HorizontalAlignment="Right"
                                                 Style="{StaticResource FluentIconButton}"
                                                 Content="&#xE75C;"
@@ -1093,11 +1093,11 @@
                                                     HorizontalAlignment="Center"
                                                     Margin="0,14,0,0">
                                             <Button x:Name="CheckForUpdates"
-                                                    Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='CheckForUpdate'}"
+                                                    Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='CheckForUpdate'}"
                                                     Style="{StaticResource FluentAccentButton}"
                                                     MinWidth="140"
                                                     Click="CheckForUpdates_Click" />
-                                            <Button Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ShowKnownIssues'}"
+                                            <Button Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ShowKnownIssues'}"
                                                     Style="{StaticResource FluentStandardButton}"
                                                     MinWidth="140"
                                                     Margin="8,0,0,0"
@@ -1107,7 +1107,7 @@
                                                     Style="{StaticResource FluentStandardButton}"
                                                     MinWidth="140"
                                                     Margin="8,0,0,0"
-                                                    ToolTip="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutWebsite'}"
+                                                    ToolTip="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutWebsite'}"
                                                     Click="OpenWebsite_Click" />
                                         </StackPanel>
                                         <Label HorizontalAlignment="Center"
@@ -1123,7 +1123,7 @@
                                      GildeConnect widget opens in its own window. -->
                                 <Border Style="{StaticResource FluentCard}" Margin="0,10,0,0" Padding="20">
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutContactSupport'}"
+                                        <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutContactSupport'}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
                                                    FontSize="14"
@@ -1136,11 +1136,11 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0" Margin="0,0,16,0" VerticalAlignment="Center">
-                                                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutContact'}"
+                                                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutContact'}"
                                                            FontFamily="Segoe UI Variable Text"
                                                            FontSize="12"
                                                            Foreground="{StaticResource FluentTextPrimary}" />
-                                                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutContactHint'}"
+                                                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutContactHint'}"
                                                            FontFamily="Segoe UI Variable Small"
                                                            FontSize="11"
                                                            TextWrapping="Wrap"
@@ -1151,7 +1151,7 @@
                                                     Style="{StaticResource FluentStandardButton}"
                                                     MinWidth="150"
                                                     VerticalAlignment="Center"
-                                                    Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutContactAction'}"
+                                                    Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutContactAction'}"
                                                     Click="OpenContactWidget_Click" />
                                         </Grid>
 
@@ -1161,11 +1161,11 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0" Margin="0,0,16,0" VerticalAlignment="Center">
-                                                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutSupport'}"
+                                                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutSupport'}"
                                                            FontFamily="Segoe UI Variable Text"
                                                            FontSize="12"
                                                            Foreground="{StaticResource FluentTextPrimary}" />
-                                                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutSupportHint'}"
+                                                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutSupportHint'}"
                                                            FontFamily="Segoe UI Variable Small"
                                                            FontSize="11"
                                                            TextWrapping="Wrap"
@@ -1176,7 +1176,7 @@
                                                     Style="{StaticResource FluentAccentButton}"
                                                     MinWidth="150"
                                                     VerticalAlignment="Center"
-                                                    Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutSupportAction'}"
+                                                    Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutSupportAction'}"
                                                     Click="OpenSupportWidget_Click" />
                                         </Grid>
                                     </StackPanel>
@@ -1185,7 +1185,7 @@
                                 <!-- Project + author links -->
                                 <Border Style="{StaticResource FluentCard}" Margin="0,10,0,0" Padding="20">
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutProject'}"
+                                        <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutProject'}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
                                                    FontSize="14"
@@ -1198,7 +1198,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutCopyright'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutCopyright'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12" />
@@ -1215,7 +1215,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutWebsite'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutWebsite'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12"
@@ -1237,7 +1237,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutAuthorWebsite'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutAuthorWebsite'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12"
@@ -1259,7 +1259,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutSourceCode'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutSourceCode'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12"
@@ -1281,7 +1281,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutIssues'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutIssues'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12"
@@ -1292,7 +1292,7 @@
                                                 <Hyperlink NavigateUri="{x:Static poweraim:ApplicationConstants.IssuesUrl}"
                                                            Foreground="{StaticResource FluentAccent}"
                                                            RequestNavigate="AboutLink_RequestNavigate">
-                                                    <Run Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutIssues'}" />
+                                                    <Run Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutIssues'}" />
                                                 </Hyperlink>
                                             </TextBlock>
                                         </Grid>
@@ -1303,7 +1303,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutDocumentation'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutDocumentation'}"
                                                        Foreground="{StaticResource FluentTextSecondary}"
                                                        FontFamily="Segoe UI Variable Text"
                                                        FontSize="12"
@@ -1330,21 +1330,21 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"
-                                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutReleases'}"
+                                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutReleases'}"
                                                        FontFamily="Segoe UI Variable Display"
                                                        FontWeight="SemiBold"
                                                        FontSize="14"
                                                        Foreground="{StaticResource FluentTextPrimary}"
                                                        VerticalAlignment="Center" />
                                             <Button Grid.Column="1"
-                                                    Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OpenOnGitHub'}"
+                                                    Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OpenOnGitHub'}"
                                                     Style="{StaticResource FluentStandardButton}"
                                                     Padding="10,4,12,4"
                                                     Click="OpenReleasesOnGitHub_Click" />
                                         </Grid>
 
                                         <TextBlock x:Name="ReleasesStatus"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutReleasesLoading'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AboutReleasesLoading'}"
                                                    Foreground="{StaticResource FluentTextTertiary}"
                                                    FontFamily="Segoe UI Variable Small"
                                                    FontSize="11"
@@ -1405,11 +1405,11 @@
                                                 Click="BackToGamepadSettings_Click">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                                <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                                <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                             </StackPanel>
                                         </Button>
                                         <TextBlock Grid.Column="1"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='HiddenControllers'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='HiddenControllers'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1446,7 +1446,7 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
@@ -1454,7 +1454,7 @@
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
                                         <TextBlock x:Name="TriggerEditTitle"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='EditTrigger'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='EditTrigger'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1478,14 +1478,14 @@
                                     <Button Grid.Column="2"
                                             x:Name="TriggerEditCancel"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="TriggerEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             x:Name="TriggerEditSave"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="TriggerEditSave_Click" />
                                 </Grid>
@@ -1522,7 +1522,7 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
@@ -1530,7 +1530,7 @@
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
                                         <TextBlock x:Name="AutoPlayEditTitle"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='EditAutoPlayProfile'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='EditAutoPlayProfile'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1554,14 +1554,14 @@
                                     <Button Grid.Column="2"
                                             x:Name="AutoPlayEditCancel"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="AutoPlayEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             x:Name="AutoPlayEditSave"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="AutoPlayEditSave_Click" />
                                 </Grid>
@@ -1598,7 +1598,7 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
@@ -1606,7 +1606,7 @@
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
                                         <TextBlock x:Name="ToolEditTitle"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ToolEdit'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ToolEdit'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1630,14 +1630,14 @@
                                     <Button Grid.Column="2"
                                             x:Name="ToolEditCancel"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="ToolEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             x:Name="ToolEditSave"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="ToolEditSave_Click" />
                                 </Grid>
@@ -1674,7 +1674,7 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
@@ -1682,7 +1682,7 @@
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
                                         <TextBlock x:Name="AntiRecoilEditTitle"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiRecoilProfileEdit'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiRecoilProfileEdit'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1706,14 +1706,14 @@
                                     <Button Grid.Column="2"
                                             x:Name="AntiRecoilEditCancel"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="AntiRecoilEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             x:Name="AntiRecoilEditSave"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="AntiRecoilEditSave_Click" />
                                 </Grid>
@@ -1750,7 +1750,7 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
@@ -1758,7 +1758,7 @@
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
                                         <TextBlock x:Name="AimEditTitle"
-                                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AimProfileEdit'}"
+                                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AimProfileEdit'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1782,14 +1782,14 @@
                                     <Button Grid.Column="2"
                                             x:Name="AimEditCancel"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="AimEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             x:Name="AimEditSave"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="AimEditSave_Click" />
                                 </Grid>
@@ -1832,14 +1832,14 @@
                                             Padding="10,6,12,6">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE72B;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" FontSize="12" VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
+                                            <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Back'}" Margin="6,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontSize="13" />
                                         </StackPanel>
                                     </Button>
                                     <StackPanel Grid.Column="1"
                                                 Orientation="Horizontal"
                                                 Margin="14,0,0,0"
                                                 VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MappingProfileLabel'}"
+                                        <TextBlock Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='MappingProfileLabel'}"
                                                    Foreground="{DynamicResource FluentTextPrimary}"
                                                    FontFamily="Segoe UI Variable Display"
                                                    FontWeight="SemiBold"
@@ -1862,13 +1862,13 @@
                                     </StackPanel>
                                     <Button Grid.Column="2"
                                             Style="{StaticResource FluentStandardButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Discard'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Discard'}"
                                             MinWidth="90"
                                             Margin="0,0,8,0"
                                             Click="MappingEditCancel_Click" />
                                     <Button Grid.Column="3"
                                             Style="{StaticResource FluentAccentButton}"
-                                            Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+                                            Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                                             MinWidth="100"
                                             Click="MappingEditSave_Click" />
                                 </Grid>
