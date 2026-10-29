@@ -61,17 +61,17 @@
                         <TextBlock Text="&#xEC42;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerSectionTitle'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerSubtitle'}" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TriggerSectionTitle'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TriggerSubtitle'}" />
                     </StackPanel>
                     <local:AToggle Grid.Column="2"
                                        Background="Transparent" BorderBrush="Transparent"
-                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='EnabledActive'}"
+                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='EnabledActive'}"
                                        VerticalAlignment="Center"
                                        Checked="{Binding Trigger.Enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
                 <TextBox Text="{Binding Trigger.Name, UpdateSourceTrigger=PropertyChanged}"
-                         Tag="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Name'}"
+                         Tag="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Name'}"
                          Style="{DynamicResource placeHolder}" />
             </StackPanel>
         </Border>
@@ -88,8 +88,8 @@
                         <TextBlock Text="&#xE7C8;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessOptional'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessFireHint'}" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessOptional'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessFireHint'}" />
                     </StackPanel>
                 </Grid>
                 <TextBox Text="{Binding Trigger.MatchProcess, UpdateSourceTrigger=PropertyChanged}"
@@ -99,7 +99,7 @@
                            Margin="2,8,0,0"
                            TextWrapping="Wrap"
                            Visibility="{Binding Converter={StaticResource helpVis}}"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerMatchProcessWildcardHelp'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TriggerMatchProcessWildcardHelp'}" />
             </StackPanel>
         </Border>
 
@@ -117,8 +117,8 @@
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerActions'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ActionsSubtitle'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerActions'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ActionsSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" x:Name="ModePanel" Orientation="Horizontal" VerticalAlignment="Center" />
                 </Grid>
@@ -131,7 +131,7 @@
                            Visibility="{Binding Converter={StaticResource helpVis}}"
                            Margin="2,8,0,0"
                            TextWrapping="Wrap"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DescriptionTriggerActions'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DescriptionTriggerActions'}" />
             </StackPanel>
         </Border>
 
@@ -147,32 +147,32 @@
                         <TextBlock Text="&#xE7B3;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Detection'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DetectionSubtitle'}" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Detection'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DetectionSubtitle'}" />
                     </StackPanel>
                 </Grid>
 
                 <local:AToggle Background="Transparent" BorderBrush="Transparent"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='NeedsDetection'}"
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='NeedsDetection'}"
                                    Checked="{Binding Trigger.NeedsDetection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock Style="{StaticResource FluentCaption}"
                            Margin="2,0,0,8"
                            TextWrapping="Wrap"
                            Visibility="{Binding Converter={StaticResource helpVis}}"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DescriptionNeedsDetection'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DescriptionNeedsDetection'}" />
 
                 <StackPanel Visibility="{Binding Trigger.NeedsDetection, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource boolToVis}}">
                     <Border BorderBrush="{DynamicResource FluentStroke}" BorderThickness="0,1,0,0" Margin="0,4,0,12" />
 
                     <local:AToggle Background="Transparent" BorderBrush="Transparent"
-                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ChargeMode'}"
+                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ChargeMode'}"
                                        Checked="{Binding Trigger.ChargeMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock x:Name="ChargeModeDescription"
                                Style="{StaticResource FluentCaption}"
                                Margin="2,0,0,8"
                                TextWrapping="Wrap"
                                Visibility="{Binding Converter={StaticResource helpVis}}"
-                               Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ChargeModeToolTip'}" />
+                               Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='ChargeModeToolTip'}" />
 
                     <!-- Charge entry check (only when Charge Mode on) -->
                     <Border Background="{DynamicResource FluentSurface3}"
@@ -184,7 +184,7 @@
                             Visibility="{Binding Trigger.ChargeMode, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource boolToVis}}">
                         <StackPanel>
                             <TextBlock Style="{StaticResource FluentCaption}"
-                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='WhenChargingBegins'}"
+                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='WhenChargingBegins'}"
                                        Margin="0,0,0,6" />
                             <Grid x:Name="ChargeEnterIntersectionBox">
                                 <Grid.ColumnDefinitions>
@@ -204,7 +204,7 @@
                             Margin="0,0,0,0">
                         <StackPanel>
                             <TextBlock Style="{StaticResource FluentCaption}"
-                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='WhenTriggerFires'}"
+                                       Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='WhenTriggerFires'}"
                                        Margin="0,0,0,6" />
                             <Grid x:Name="IntersectionBox">
                                 <Grid.ColumnDefinitions>
@@ -232,15 +232,15 @@
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerKeys'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerKeysSubtitle'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerKeys'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TriggerKeysSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
                         <TextBlock VerticalAlignment="Center" Margin="0,-10,18,0"
                                    Foreground="{DynamicResource FluentTextSecondary}"
                                    FontFamily="Segoe UI Variable Text"
                                    FontSize="13"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerKeysOperator'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TriggerKeysOperator'}" />
                         <StackPanel x:Name="TriggerKeyOperator" Orientation="Horizontal" VerticalAlignment="Center" />
                     </StackPanel>
                 </Grid>
@@ -250,7 +250,7 @@
                            Visibility="{Binding Converter={StaticResource helpVis}}"
                            Margin="2,8,0,0"
                            TextWrapping="Wrap"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DescriptionTriggerKeys'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DescriptionTriggerKeys'}" />
             </StackPanel>
         </Border>
 
@@ -268,15 +268,15 @@
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeys'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeysSubtitle'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeys'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeysSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
                         <TextBlock VerticalAlignment="Center" Margin="0,-10,18,0"
                                    Foreground="{DynamicResource FluentTextSecondary}"
                                    FontFamily="Segoe UI Variable Text"
                                    FontSize="13"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeysOperator'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeysOperator'}" />
                         <StackPanel x:Name="AntiTriggerKeyOperator" Orientation="Horizontal" VerticalAlignment="Center" />
                     </StackPanel>
                 </Grid>
@@ -286,7 +286,7 @@
                            Visibility="{Binding Converter={StaticResource helpVis}}"
                            Margin="2,8,0,0"
                            TextWrapping="Wrap"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DescriptionAntiTriggerKeys'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='DescriptionAntiTriggerKeys'}" />
             </StackPanel>
         </Border>
 
@@ -303,9 +303,9 @@
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OcrConditions'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OcrConditions'}" />
                         <TextBlock Style="{StaticResource SectionSubtitle}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='OcrConditionsTreeHelp'}"
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='OcrConditionsTreeHelp'}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
@@ -326,9 +326,9 @@
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiOcrConditions'}" />
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiOcrConditions'}" />
                         <TextBlock Style="{StaticResource SectionSubtitle}"
-                                   Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiOcrConditionsTreeHelp'}"
+                                   Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AntiOcrConditionsTreeHelp'}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
@@ -348,8 +348,8 @@
                         <TextBlock Text="&#xE916;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Timing'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TimingSubtitle'}" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Timing'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TimingSubtitle'}" />
                     </StackPanel>
                 </Grid>
                 <StackPanel x:Name="TimeSettings" />
