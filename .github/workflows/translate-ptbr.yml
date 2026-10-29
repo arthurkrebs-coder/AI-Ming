@@ -1,0 +1,56 @@
+name: Complete Brazilian Portuguese translations
+
+on:
+  push:
+    branches:
+      - chatgpt-ptbr-layout-fix
+    paths:
+      - tools/translate_ptbr.py
+      - .github/workflows/translate-ptbr.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Check out the modified branch (without large model assets)
+        uses: actions/checkout@v4
+        with:
+          ref: chatgpt-ptbr-layout-fix
+          lfs: false
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install translator
+        run: python -m pip install --disable-pip-version-check 'deep-translator==1.11.4'
+      - name: Translate all remaining locale entries
+        run: python tools/translate_ptbr.py --workers 3 --attempts 5 --minimum-success 0.95
+      - name: Check placeholder integrity and commit translated locale
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from re import findall
+          src=json.loads(Path("PowerAim/Localizations/Locale_en-US.json").read_text(encoding="utf-8-sig"))
+          pt=json.loads(Path("PowerAim/Localizations/Locale_pt-BR.json").read_text(encoding="utf-8-sig"))
+          assert set(pt).issubset(set(src))
+          assert len(pt) >= int(len(src)*0.95)
+          for k,v in pt.items():
+              assert isinstance(v,str) and v.strip(), k
+              assert sorted(findall(r'\{\d+(?::[^{}]+)?\}', v)) == sorted(findall(r'\{\d+(?::[^{}]+)?\}', src[k])), k
+          print(f"Validated {len(pt)}/{len(src)} entries")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PowerAim/Localizations/Locale_pt-BR.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Complete pt-BR interface translations"
+            git push origin HEAD:chatgpt-ptbr-layout-fix
+          fi
