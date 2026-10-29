@@ -127,17 +127,30 @@ public partial class MainWindow
 
     private void Window_Closing(object sender, CancelEventArgs e)
     {
-        _magnifier?.Dispose();
-        _fileManager.Dispose();
-        FileManager.AIManager?.Dispose();
-        GamepadManager.Dispose();
+        // A XAML parse failure may close this window before its constructor and
+        // CreateUI complete. All runtime services are optional until then.
+        try { _magnifier?.Dispose(); } catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+        try { _fileManager?.Dispose(); } catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+        try { FileManager.AIManager?.Dispose(); } catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+        if (_uiCreated)
+        {
+            try { GamepadManager.Dispose(); } catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+        }
+        try { FOV.Instance?.Close(); } catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
 
-        FOV.Instance?.Close();
-
-        if (AppConfig.Current.DropdownState.MouseMovementMethod == MouseMovementMethod.LGHUB) LGMouse.Close();
-
-        AppConfig.Current.Save();
-        Application.Current.Shutdown();
+        var config = AppConfig.Current;
+        if (config != null)
+        {
+            try
+            {
+                if (config.DropdownState?.MouseMovementMethod == MouseMovementMethod.LGHUB)
+                    LGMouse.Close();
+                config.Save();
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+        }
+        // Closing already occurs during WPF shutdown. Calling Shutdown again
+        // here was redundant and could mask the original startup exception.
     }
 
     private void Exit_Click(object sender, RoutedEventArgs e)
