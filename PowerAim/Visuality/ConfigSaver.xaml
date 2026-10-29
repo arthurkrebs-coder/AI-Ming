@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PowerAim.Visuality"
         xmlns:visuality="clr-namespace:PowerAim.Visuality"
         mc:Ignorable="d"
-        Title="Save Configuration"
+        Title="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SaveConfiguration'}"
         Height="250"
         Width="470"
         WindowStyle="None"
