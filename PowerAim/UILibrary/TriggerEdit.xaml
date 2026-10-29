@@ -61,8 +61,8 @@
                         <TextBlock Text="&#xEC42;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="Trigger" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Name and active state" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerSectionTitle'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerSubtitle'}" />
                     </StackPanel>
                     <local:AToggle Grid.Column="2"
                                        Background="Transparent" BorderBrush="Transparent"
@@ -88,8 +88,8 @@
                         <TextBlock Text="&#xE7C8;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="Match process (optional)" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Only fire while a process matching the pattern is focused" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessOptional'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='MatchProcessFireHint'}" />
                     </StackPanel>
                 </Grid>
                 <TextBox Text="{Binding Trigger.MatchProcess, UpdateSourceTrigger=PropertyChanged}"
@@ -99,7 +99,7 @@
                            Margin="2,8,0,0"
                            TextWrapping="Wrap"
                            Visibility="{Binding Converter={StaticResource helpVis}}"
-                           Text="Supports wildcards (*, ?) and pipes (cs2|valorant). Leave empty for always-on. Requires 'Auto-switch profile by game' in Settings → Active Processes." />
+                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerMatchProcessWildcardHelp'}" />
             </StackPanel>
         </Border>
 
@@ -118,7 +118,7 @@
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
                                    Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerActions'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Keys or buttons to send when triggered" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='ActionsSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" x:Name="ModePanel" Orientation="Horizontal" VerticalAlignment="Center" />
                 </Grid>
@@ -147,8 +147,8 @@
                         <TextBlock Text="&#xE7B3;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="Detection" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Whether and how detection gates the trigger" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Detection'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='DetectionSubtitle'}" />
                     </StackPanel>
                 </Grid>
 
@@ -184,7 +184,7 @@
                             Visibility="{Binding Trigger.ChargeMode, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource boolToVis}}">
                         <StackPanel>
                             <TextBlock Style="{StaticResource FluentCaption}"
-                                       Text="When charging begins"
+                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='WhenChargingBegins'}"
                                        Margin="0,0,0,6" />
                             <Grid x:Name="ChargeEnterIntersectionBox">
                                 <Grid.ColumnDefinitions>
@@ -204,7 +204,7 @@
                             Margin="0,0,0,0">
                         <StackPanel>
                             <TextBlock Style="{StaticResource FluentCaption}"
-                                       Text="When trigger fires"
+                                       Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='WhenTriggerFires'}"
                                        Margin="0,0,0,6" />
                             <Grid x:Name="IntersectionBox">
                                 <Grid.ColumnDefinitions>
@@ -233,7 +233,7 @@
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
                                    Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='LabelTriggerKeys'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Keys that must be pressed for the trigger to run" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TriggerKeysSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
                         <TextBlock VerticalAlignment="Center" Margin="0,-10,18,0"
@@ -269,7 +269,7 @@
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource SectionTitleBig}"
                                    Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeys'}" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Keys that block the trigger when pressed" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AntiTriggerKeysSubtitle'}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
                         <TextBlock VerticalAlignment="Center" Margin="0,-10,18,0"
@@ -348,8 +348,8 @@
                         <TextBlock Text="&#xE916;" Style="{StaticResource SectionIconGlyph}" />
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="Timing" />
-                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="Delays and pauses between fires" />
+                        <TextBlock Style="{StaticResource SectionTitleBig}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Timing'}" />
+                        <TextBlock Style="{StaticResource SectionSubtitle}" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TimingSubtitle'}" />
                     </StackPanel>
                 </Grid>
                 <StackPanel x:Name="TimeSettings" />
