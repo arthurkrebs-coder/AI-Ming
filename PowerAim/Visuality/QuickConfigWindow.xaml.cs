@@ -29,6 +29,10 @@ namespace PowerAim.Visuality
         {
             _owner = owner;
             InitializeComponent();
+            // The detached config picker is localized without affecting technical config names.
+            var isPortuguese = System.Globalization.CultureInfo.CurrentUICulture.Name.Equals("pt-BR", StringComparison.OrdinalIgnoreCase);
+            QuickConfigTitle.Text = isPortuguese ? "CONFIGURAÇÃO RÁPIDA" : "QUICK CONFIG";
+            SaveCurrentText.Text = isPortuguese ? "Salvar configuração como…" : "Save current as…";
             Owner = owner;
             BuildList();
             Loaded += (_, _) => this.HideForCaptureIfEnabled();
