@@ -14,7 +14,7 @@ namespace Launcher
                 args.Handled = true;
                 try
                 {
-                    MessageBox.Show(
+                    System.Windows.MessageBox.Show(
                         "O Launcher encontrou um erro e não conseguiu continuar.\n\n" +
                         args.Exception.Message + "\n\nDetalhes em:\n" + StartupDiagnostics.LogFile,
                         "PowerAim — Erro ao iniciar", MessageBoxButton.OK, MessageBoxImage.Error);
