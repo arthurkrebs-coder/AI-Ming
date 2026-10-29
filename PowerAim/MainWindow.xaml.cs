@@ -96,7 +96,8 @@ public partial class MainWindow
 
         // Floating config-label tab — a separate window that sits just above the title bar, so it
         // shows the config name OUTSIDE the shell without altering the main window's content.
-        Loaded += (_, _) => ShowConfigLabelOverlay();
+        // The active profile now lives in the title-bar config menu.
+        // Do not create a separate floating window that can overlap other controls.
         LocationChanged += (_, _) => _configLabelOverlay?.Reposition();
         SizeChanged += (_, _) => _configLabelOverlay?.Reposition();
         StateChanged += (_, _) => _configLabelOverlay?.Reposition();
