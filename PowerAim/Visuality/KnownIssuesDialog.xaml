@@ -8,7 +8,7 @@
         xmlns:mdXaml="https://github.com/whistyun/MdXaml"
         xmlns:visuality="clr-namespace:PowerAim.Visuality"
         mc:Ignorable="d"
-        Title="Known Issues"
+        Title="{Binding Converter={StaticResource localeConverter}, ConverterParameter='KnownIssues'}"
         Height="500"
         Width="640"
         WindowStyle="None"
