@@ -15,9 +15,9 @@ permissions:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 100
+    timeout-minutes: 120
     steps:
-      - name: Check out the modified branch (without large model assets)
+      - name: Check out modified branch
         uses: actions/checkout@v4
         with:
           ref: chatgpt-ptbr-layout-fix
@@ -27,30 +27,56 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install translator
-        run: python -m pip install --disable-pip-version-check 'deep-translator==1.11.4'
-      - name: Translate all remaining locale entries
-        run: python tools/translate_ptbr.py --workers 3 --attempts 5 --minimum-success 0.95
-      - name: Check placeholder integrity and commit translated locale
+      - name: Install local Brazilian Portuguese translation engine
+        run: python -m pip install --disable-pip-version-check argostranslate
+      - name: Generate complete Brazilian Portuguese translation
+        run: python tools/translate_ptbr.py
+      - name: Check integrity of all UI translations and changed XAML files
         shell: bash
         run: |
           python - <<'PY'
-          import json
+          import json, re, xml.etree.ElementTree as ET
           from pathlib import Path
-          from re import findall
           src=json.loads(Path("PowerAim/Localizations/Locale_en-US.json").read_text(encoding="utf-8-sig"))
           pt=json.loads(Path("PowerAim/Localizations/Locale_pt-BR.json").read_text(encoding="utf-8-sig"))
-          assert set(pt).issubset(set(src))
-          assert len(pt) >= int(len(src)*0.95)
-          for k,v in pt.items():
-              assert isinstance(v,str) and v.strip(), k
-              assert sorted(findall(r'\{\d+(?::[^{}]+)?\}', v)) == sorted(findall(r'\{\d+(?::[^{}]+)?\}', src[k])), k
-          print(f"Validated {len(pt)}/{len(src)} entries")
+          assert set(src)==set(pt), "Missing/extra keys in pt-BR locale"
+          pat=re.compile(r'\{\d+(?::[^{}]+)?\}')
+          for key, value in pt.items():
+              assert isinstance(value,str) and value.strip(), key
+              assert sorted(pat.findall(value)) == sorted(pat.findall(src[key])), key
+          for f in ["PowerAim/MainWindow.xaml","PowerAim/Visuality/QuickConfigWindow.xaml"]:
+              ET.parse(f)
+          print(f"Validated every one of {len(pt)} translated UI keys, placeholders and XAML.")
           PY
+      - name: Commit completed translation to the modified branch
+        shell: bash
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add PowerAim/Localizations/Locale_pt-BR.json
           if ! git diff --cached --quiet; then
-            git commit -m "Complete pt-BR interface translations"
+            git commit -m "Complete 100% of pt-BR localization keys"
             git push origin HEAD:chatgpt-ptbr-layout-fix
           fi
+
+  validate-windows-build:
+    needs: translate
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out translated branch
+        uses: actions/checkout@v4
+        with:
+          ref: chatgpt-ptbr-layout-fix
+          lfs: false
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore and compile Windows x64 (DirectML)
+        shell: pwsh
+        run: |
+          dotnet restore .\PowerAim\PowerAim.csproj -p:IsCuda=false -p:Platform=x64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet build .\PowerAim\PowerAim.csproj -c Release -p:IsCuda=false -p:Platform=x64 --no-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
