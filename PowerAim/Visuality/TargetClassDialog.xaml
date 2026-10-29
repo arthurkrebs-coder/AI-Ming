@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:visuality="clr-namespace:PowerAim.Visuality"
         mc:Ignorable="d"
-        Title="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TargetClasses'}"
+        Title="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TargetClasses'}"
         Height="520"
         Width="460"
         WindowStyle="None"
@@ -37,7 +37,7 @@
                            FontFamily="Segoe UI Variable Display"
                            FontWeight="SemiBold"
                            FontSize="13"
-                           Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TargetClasses'}" />
+                           Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TargetClasses'}" />
             </StackPanel>
             <Button HorizontalAlignment="Right"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
@@ -75,17 +75,17 @@
                 BorderThickness="1"
                 CornerRadius="6" Padding="14,10,14,10">
             <StackPanel>
-                <TextBlock x:Name="ModeLabel" Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='TargetClassFilterMode'}"
+                <TextBlock x:Name="ModeLabel" Text="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='TargetClassFilterMode'}"
                            Foreground="{DynamicResource FluentTextSecondary}"
                            FontFamily="Segoe UI Variable Small" FontSize="11"
                            Margin="0,0,0,6" />
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="RbAll" Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AllClasses'}" GroupName="FilterMode"
+                    <RadioButton x:Name="RbAll" Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='AllClasses'}" GroupName="FilterMode"
                                  Foreground="{DynamicResource FluentTextPrimary}"
                                  FontFamily="Segoe UI Variable Text" FontSize="13"
                                  Margin="0,0,18,0" IsChecked="True"
                                  Checked="Rb_Checked" />
-                    <RadioButton x:Name="RbSpecific" Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='SpecificClasses'}" GroupName="FilterMode"
+                    <RadioButton x:Name="RbSpecific" Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='SpecificClasses'}" GroupName="FilterMode"
                                  Foreground="{DynamicResource FluentTextPrimary}"
                                  FontFamily="Segoe UI Variable Text" FontSize="13"
                                  Checked="Rb_Checked" />
@@ -116,12 +116,12 @@
                        FontFamily="Segoe UI Variable Small" FontSize="11"
                        VerticalAlignment="Center"
                        TextWrapping="Wrap" />
-            <Button Grid.Column="1" x:Name="CancelButton" Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
+            <Button Grid.Column="1" x:Name="CancelButton" Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Cancel'}"
                     MinWidth="96" MinHeight="34"
                     Margin="0,0,8,0" Padding="14,6,14,6"
                     Style="{DynamicResource FluentStandardButton}"
                     Click="Cancel_Click" />
-            <Button Grid.Column="2" x:Name="SaveButton" Content="{Binding Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
+            <Button Grid.Column="2" x:Name="SaveButton" Content="{Binding Path=., Mode=OneWay, Converter={StaticResource localeConverter}, ConverterParameter='Save'}"
                     MinWidth="100" MinHeight="34"
                     Padding="14,6,14,6"
                     Style="{DynamicResource FluentAccentButton}"
