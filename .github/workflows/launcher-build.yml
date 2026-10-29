@@ -7,6 +7,10 @@ on:
     paths:
       - 'Launcher/**'
       - 'PowerAim/App.xaml.cs'
+      - 'PowerAim/MainWindow.xaml'
+      - 'PowerAim/MainWindow.LayoutSearch.cs'
+      - 'PowerAim/Visuality/*.xaml'
+      - 'PowerAim/UILibrary/*.xaml'
       - 'PowerAim/PowerAim.csproj'
       - 'build.ps1'
       - '.github/workflows/launcher-build.yml'
