@@ -60,6 +60,7 @@ jobs:
           git add PowerAim/Localizations/Locale_pt-BR.json
           if ! git diff --cached --quiet; then
             git commit -m "Complete 100% of pt-BR localization keys"
+            git pull --rebase origin chatgpt-ptbr-layout-fix
             git push origin HEAD:chatgpt-ptbr-layout-fix
           fi
 
