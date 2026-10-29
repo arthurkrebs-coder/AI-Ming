@@ -1292,7 +1292,7 @@
                                                 <Hyperlink NavigateUri="{x:Static poweraim:ApplicationConstants.IssuesUrl}"
                                                            Foreground="{StaticResource FluentAccent}"
                                                            RequestNavigate="AboutLink_RequestNavigate">
-                                                    <Run Text="Issues / report a bug" />
+                                                    <Run Text="{Binding Converter={StaticResource localeConverter}, ConverterParameter='AboutIssues'}" />
                                                 </Hyperlink>
                                             </TextBlock>
                                         </Grid>
