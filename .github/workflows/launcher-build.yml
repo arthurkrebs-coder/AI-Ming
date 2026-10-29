@@ -1,0 +1,70 @@
+name: Build PowerAim pt-BR (Launcher fix)
+
+on:
+  push:
+    branches:
+      - chatgpt-ptbr-layout-fix
+    paths:
+      - 'Launcher/**'
+      - 'PowerAim/App.xaml.cs'
+      - 'PowerAim/PowerAim.csproj'
+      - 'build.ps1'
+      - '.github/workflows/launcher-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout complete source
+        uses: actions/checkout@v4
+      - name: Install .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build DirectML and CUDA releases with a stable PowerAim.exe
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          foreach ($variant in @('cuda','directml')) {
+            $isCuda = if ($variant -eq 'cuda') { 'true' } else { 'false' }
+            $output = Join-Path $PWD "dist/$variant"
+            Write-Host "Publishing $variant..."
+            dotnet publish .\PowerAim\PowerAim.csproj -c Release -r win-x64 -p:IsCuda=$isCuda --self-contained false -p:DebugType=None -o $output
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            dotnet publish .\Launcher\Launcher.csproj -c Release -r win-x64 --self-contained false -p:DebugType=None -o $output
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            foreach ($required in @('PowerAim.exe', 'Launcher.exe')) {
+              if (-not (Test-Path (Join-Path $output $required))) {
+                throw "$required missing from $variant build"
+              }
+            }
+            @(
+              "PowerAim pt-BR — versão pessoal"
+              "Abra PowerAim.exe diretamente; Launcher.exe é opcional."
+              "O Launcher foi ajustado para não renomear o executável."
+              "Relatórios de falha:"
+              "  %LOCALAPPDATA%\PowerAim\launcher-errors.log"
+              "  %LOCALAPPDATA%\PowerAim\poweraim-errors.log"
+              "Executáveis não assinados. Confira o Histórico de Proteção se o Windows os bloquear."
+            ) | Set-Content -Path (Join-Path $output 'LEIA-ME-PRIMEIRO.txt') -Encoding utf8
+            Compress-Archive -Path (Join-Path $output '*') -DestinationPath "PowerAim-ptBR-$variant.zip" -Force
+          }
+      - name: Upload CUDA ZIP for NVIDIA
+        uses: actions/upload-artifact@v4
+        with:
+          name: PowerAim-ptBR-CUDA-Windows-x64
+          path: PowerAim-ptBR-cuda.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload DirectML ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: PowerAim-ptBR-DirectML-Windows-x64
+          path: PowerAim-ptBR-directml.zip
+          if-no-files-found: error
+          retention-days: 30
