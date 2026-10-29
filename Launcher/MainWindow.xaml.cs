@@ -116,13 +116,28 @@ namespace Launcher
             InitializeComponent();
             
             DataContext = this;
-            // Never let a startup failure vanish into a fire-and-forget task — surface it in the status line.
-            Task.Delay(400).ContinueWith(async _ =>
-            {
-                try { await Execute(); }
-                catch (Exception e) { Status = $"Error: {e.Message}"; SubTitle = "Start failed"; }
-            });
+            // Run startup on the WPF UI dispatcher, not on a ThreadPool continuation.
+            // The previous ContinueWith changed bound properties and window state off-thread,
+            // which could make the launcher exit without displaying an actionable error.
+            Loaded += MainWindow_Loaded;
         }
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= MainWindow_Loaded;
+            try
+            {
+                await Task.Delay(400);
+                await Execute(); // resumes on the WPF dispatcher
+            }
+            catch (Exception ex)
+            {
+                StartupDiagnostics.Report("Launcher initialization", ex);
+                Status = $"Falha ao iniciar: {ex.Message}";
+                SubTitle = "Não foi possível abrir o PowerAim";
+                IsInstallerMode = true; // allow close/minimize buttons to remain visible
+            }
+        }
+
         private void CheckCudaAvailability()
         {
             ContainsCudaRelease = SelectedRelease?.Assets.Any(a => a.Name.Contains("_cuda.zip")) == true;
